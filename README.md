@@ -19,5 +19,5 @@ It is free to install from the [Steam Workshop](https://steamcommunity.com/share
 ![example 6](images/6.jpg)<br><br>
 
 ## Trailer
-Click on the cover image below to view the video (it i in the `/videos` folder)<br><br>
+Click on the cover image below to view the video (it in in the `/videos` folder)<br><br>
 [![trailer](images/cover.jpg)](videos/%D1%82%D0%B5%D0%BF%D0%B5%D1%80%D1%8C%20%D1%8D%D1%82%D0%BE%20%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BD%D0%B0%20%D0%BE%D0%B1%D0%BE%D0%B8.mp4)
