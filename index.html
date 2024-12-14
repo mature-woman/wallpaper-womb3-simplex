@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+  <title>womb3</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <link rel="stylesheet" type="text/css" href="css/fira.css" />
+  <link rel="stylesheet" type="text/css" href="css/hack.css" />
+</head>
+
+<body>
+  <header>
+    <h1 id="text">УТРОБА 3</h1>
+  </header>
+  <canvas class="shell"></canvas>
+
+  <svg style="position: absolute">
+    <defs>
+      <filter id="blob">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"></feGaussianBlur>
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="blob">
+        </feColorMatrix>
+      </filter>
+    </defs>
+  </svg>
+
+  <script src="js/womb3-simplex.js" type="module"></script>
+  <script>
+    document.addEventListener('womb.loaded', function (e) {
+      for (const shell of document.getElementsByClassName('shell')) {
+        // Перебор оболочек
+        const layer = new e.detail.womb(shell);
+        if (layer instanceof e.detail.womb) {
+          // Удалось инициализировать слой
+
+          layer.init();
+
+          layer.generate();
+          // Инициализация сдвига
+
+          const text = document.getElementById('text');
+          const filter = document.getElementById('blob');
+          const blur = filter.getElementsByTagName('feGaussianBlur')[0];
+          const matrix = filter.getElementsByTagName('feColorMatrix')[0];
+          const html = document.getElementsByTagName('html')[0];
+          let render = 30;
+          let zoom = 1;
+          let speed = 0.01;
+          let offset = 0;
+          let color = 'red';
+          let drawing_diameter = 40;
+          let drawing_delay = 20;
+          let drawing_render = 50;
+          let flashlight_diameter = 300;
+          let flashlight_delay = 555;
+          let flashlight_render = 20;
+          let mask = 'unset';
+          let mask_target_name = "noise_text";
+          let mask_target = document.body;
+          let mask_blur = 'unset';
+          let mask_contrast = 'unset';
+          let mask_circle = 30;
+          let mask_custom = 'circle(30% at 50% 50%)';
+          let text_border_x, text_border_y, text_border_blur, text_border_color, text_border_depth;
+          let matrix_1 = '1 0 0 0 0';
+          let matrix_2 = '0 1 0 0 0';
+          let matrix_3 = '0 0 1 0 0';
+          let matrix_4 = '0 0 0 19 -9';
+
+          let x = Math.floor(Math.random() * (window.outerWidth + 1));
+          let y = Math.floor(Math.random() * (window.outerHeight + 1));
+          window.addEventListener("mousemove", (e) => (x = e.clientX, y = e.clientY));
+
+          // Инициализация инстанции выполнения
+          let instance;
+
+          // Инициализация инстанции выполнения рисования
+          let drawing_instance;
+          let drawing_timeouts = new Set;
+          function drawing() {
+            clearInterval(drawing_instance);
+            for (const drawing_timeout of drawing_timeouts) clearTimeout(drawing_timeout);
+            drawing_instance = setInterval(function () {
+              const __x = (x - mask_target.offsetLeft) / zoom;
+              const __y = (y - mask_target.offsetTop) / zoom;
+              drawing_timeouts.add(
+                setTimeout(() => {
+                  for (let _y = 0; _y < layer.shell.height; _y += layer.block.height) {
+                    // Перебор колонок
+                    if (_y - drawing_diameter < __y && _y + drawing_diameter > __y) {
+                      // Входит в диапазон по вертикали
+                      for (let _x = 0; _x < layer.shell.width; _x += layer.block.width) {
+                        // Перебор строк
+                        if (_x - drawing_diameter < __x && _x + drawing_diameter > __x) {
+                          // Входит в диапазон по горизонтали
+                          layer.clean(_x, _y, offset, 0, 0.3, drawing_decay);
+                        }
+                      }
+                    }
+                  }
+                }, drawing_delay));
+            }, drawing_render);
+          }
+
+          // Инициализация инстанции выполнения фонаря
+          let flashlight_instance;
+          let flashlight_timeouts = new Set;
+          function flashlight() {
+            clearInterval(flashlight_instance);
+            for (const flashlight_timeout of flashlight_timeouts) clearTimeout(flashlight_timeout);
+            flashlight_instance = setInterval(() => {
+              const _x = (x - mask_target.offsetLeft) / zoom;
+              const _y = (y - mask_target.offsetTop) / zoom;
+              flashlight_timeouts.add(
+                setTimeout(() => mask_target.style.clipPath = `circle(${flashlight_diameter}px at ${_x}px ${_y}px)`, flashlight_delay)
+              );
+            }, flashlight_render);
+          }
+
+          function text_border() {
+            shadow = '';
+            for (let i = 0; i < text_border_depth; ++i) shadow += `${text_border_x}px ${text_border_y}px ${text_border_blur}px ${text_border_color}, `;
+            shadow = shadow.slice(0, -2);
+
+            if (text_border_x !== 0 || text_border_y !== 0 || text_border_blur !== 0) text.style.setProperty('--text-shadow', shadow);
+            else text.style.setProperty('--text-shadow', 'unset');
+          }
+
+          function matrix_value() {
+            matrix.setAttribute('values', matrix_1.length > 0 && matrix_2.length > 0 && matrix_3.length > 0 && matrix_4.length > 0
+              ? `${matrix_1} ${matrix_2} ${matrix_3} ${matrix_4}`
+              : ''
+            );
+          }
+
+          function init() {
+            clearInterval(instance);
+            instance = setInterval(function () {
+              layer.dump();
+              drawing ? layer.interactive(offset += speed, color) : layer.generate(offset += speed, color);
+            }, render);
+          }
+
+          // Первичная инициализация
+          init();
+
+          window.addEventListener('resize', function (e) {
+            layer.init();
+            init()
+          }, true);
+
+          // Wallpaper Engine настройки
+          window.wallpaperPropertyListener = {
+            applyUserProperties: function (properties) {
+              // Text
+              if (properties.text) text.innerText = properties.text.value;
+
+              // Font
+              if (properties.font) text.style.setProperty('--font', properties.font.value);
+
+              // Font weight
+              if (properties.font_weight) text.style.setProperty('--font-weight', properties.font_weight.value * 100);
+
+              // Text color
+              if (properties.text_color) text.style.color = 'rgb(' + properties.text_color.value.split(' ').map(function (c) {
+                return Math.ceil(c * 255);
+              }) + ')';
+
+              // Text size
+              if (properties.text_size) text.style.fontSize = properties.text_size.value + 'rem';
+
+              // Text left offset (%)
+              if (properties.text_left) text.style.setProperty('--left', properties.text_left.value + '%');
+
+              // Text top offset (%)
+              if (properties.text_top) text.style.setProperty('--top', properties.text_top.value + '%');
+
+              // Text opacity (%)
+              if (properties.text_opacity) text.style.setProperty('--opacity', properties.text_opacity.value / 100);
+
+              // Text border X (px)
+              if (properties.text_border_x) {
+                text_border_x = properties.text_border_x.value;
+                text_border();
+              }
+
+              // Text border Y (px)
+              if (properties.text_border_y) {
+                text_border_y = properties.text_border_y.value;
+                text_border();
+              }
+
+              // Text border blur (px)
+              if (properties.text_border_blur) {
+                text_border_blur = properties.text_border_blur.value;
+                text_border();
+              }
+
+              // Text border depth
+              if (properties.text_border_depth) {
+                text_border_depth = properties.text_border_depth.value;
+                text_border();
+              }
+
+              // Text border color
+              if (properties.text_border_color) {
+                text_border_color = 'rgb(' + properties.text_border_color.value.split(' ').map(function (c) {
+                  return Math.ceil(c * 255);
+                }) + ')';
+                text_border();
+              }
+
+              // Background color
+              if (properties.background) document.body.style.backgroundColor = 'rgb(' + properties.background.value.split(' ').map(function (c) {
+                return Math.ceil(c * 255);
+              }) + ')';
+
+              // Blocks width
+              if (properties.blocks_width) layer.block.width = properties.blocks_width.value;
+
+              // Blocks height
+              if (properties.blocks_height) layer.block.height = properties.blocks_height.value;
+
+              // Left offset (%)
+              if (properties.left) document.body.style.setProperty('--left', properties.left.value + '%');
+
+              // Top offset (%)
+              if (properties.top) document.body.style.setProperty('--top', properties.top.value + '%');
+
+              // Zoom
+              if (properties.zoom) {
+                zoom = properties.zoom.value;
+                document.body.style.setProperty('--zoom', zoom);
+                layer.init();
+                init()
+              }
+
+              // Render frequency (ms)
+              if (properties.render) {
+                render = properties.render.value;
+                init();
+              }
+
+              // Stick to edges
+              if (properties.stick) {
+                shell.style.setProperty('--scale', properties.stick.value);
+              };
+
+              // Blur
+              if (properties.blur) document.body.style.setProperty('--blur', properties.blur.value + 'px');
+
+              // Contrast
+              if (properties.contrast) document.body.style.setProperty('--contrast', properties.contrast.value);
+
+              // Noise blur
+              if (properties.noise_blur) blur.setAttribute('stdDeviation', properties.noise_blur.value);
+
+              // Speed
+              if (properties.speed) speed = properties.speed.value / 10000;
+
+              // Background color
+              if (properties.schemecolor) color = 'rgb(' + properties.schemecolor.value.split(' ').map(function (c) {
+                return Math.ceil(c * 255);
+              }) + ')';
+
+              // Drawing brush diameter
+              if (properties.drawing_diameter) {
+                drawing_diameter = properties.drawing_diameter.value / zoom;
+                drawing();
+              }
+
+              // Drawing decay
+              if (properties.drawing_decay) {
+                drawing_decay = properties.drawing_decay.value;
+                drawing();
+              }
+
+              // Drawing delay
+              if (properties.drawing_delay) {
+                drawing_delay = properties.drawing_delay.value;
+                drawing();
+              }
+
+              // Drawing render frequency
+              if (properties.drawing_render) {
+                drawing_render = properties.drawing_render.value;
+                drawing();
+              }
+
+              // Drawing
+              if (properties.drawing) {
+                if (properties.drawing.value) drawing();
+                else {
+                  clearInterval(drawing_instance);
+                  for (const drawing_timeout of drawing_timeouts) clearTimeout(drawing_timeout);
+                }
+              }
+
+              // Flashlight diameter
+              if (properties.flashlight_diameter) {
+                flashlight_diameter = properties.flashlight_diameter.value / zoom;
+                flashlight();
+              }
+
+              // Flashlight delay
+              if (properties.flashlight_delay) {
+                flashlight_delay = properties.flashlight_delay.value;
+                flashlight();
+              }
+
+              // Flashlight render frequency
+              if (properties.flashlight_render) {
+                flashlight_render = properties.flashlight_render.value;
+                flashlight();
+              }
+
+              // Mask: circle
+              if (properties.mask_circle) {
+                mask_circle = properties.mask_circle.value;
+                if (mask === 'circle') mask_target.style.clipPath = `circle(${mask_circle}% at 50% 50%)`;
+              }
+
+              // Mask: custom
+              if (properties.mask_custom) {
+                mask_custom = properties.mask_custom.value;
+                if (mask === 'custom') mask_target.style.clipPath = mask_custom;
+              }
+
+              // Mask target
+              if (properties.mask_target) {
+                mask_target_name = properties.mask_target.value;
+
+                shell.style.clipPath = text.style.clipPath = document.body.style.clipPath = 'unset';
+
+                if (mask_target_name === 'noise') {
+                  html.style.setProperty('--blur', 'unset');
+                  html.style.setProperty('--contrast', 'unset');
+                  mask_target = shell;
+                }
+                else if (mask_target_name === 'text') {
+                  html.style.setProperty('--blur', 'unset');
+                  html.style.setProperty('--contrast', 'unset');
+                  mask_target = text;
+                }
+                else if (mask_target_name === 'noise_text') {
+                  html.style.setProperty('--blur', mask_blur + 'px');
+                  html.style.setProperty('--contrast', mask_contrast);
+                  mask_target = document.body;
+                }
+
+                if (mask === 'flashlight') flashlight();
+              }
+
+              // Mask blur
+              if (properties.mask_blur) {
+                html.style.setProperty('--contrast', mask_blur = mask !== 'unset' ? mask_blur + 'px' : 'unset');
+              }
+
+              // Mask blur
+              if (properties.mask_blur) {
+                html.style.setProperty('--contrast', mask_blur = mask !== 'unset' ? mask_blur + 'px' : 'unset');
+              }
+
+              // Mask contrast
+              if (properties.mask_contrast) {
+                html.style.setProperty('--contrast', mask_contrast = mask !== 'unset' ? properties.mask_contrast.value : 'unset');
+              }
+
+              // Mask
+              if (properties.mask) {
+                mask = properties.mask.value;
+
+                shell.style.clipPath = text.style.clipPath = document.body.style.clipPath = 'unset';
+
+                clearInterval(flashlight_instance);
+                for (const flashlight_timeout of flashlight_timeouts) clearTimeout(flashlight_timeout);
+
+                if (mask === 'flashlight') flashlight();
+                else if (mask === 'circle') shell.style.clipPath = `circle(${mask_circle}% at 50% 50%)`;
+                else if (mask === 'custom') shell.style.clipPath = mask_custom;
+              }
+
+              // Matrix 1 [r-g-b-a-w]
+              if (properties.matrix_1) {
+                matrix_1 = properties.matrix_1.value;
+                matrix_value();
+              }
+
+              // Matrix 2 [r-g-b-a-w]
+              if (properties.matrix_2) {
+                matrix_2 = properties.matrix_2.value;
+                matrix_value();
+              }
+
+              // Matrix 3 [r-g-b-a-w]
+              if (properties.matrix_3) {
+                matrix_3 = properties.matrix_3.value;
+                matrix_value();
+              }
+
+              // Matrix 4 [r-g-b-a-w]
+              if (properties.matrix_4) {
+                matrix_4 = properties.matrix_4.value;
+                matrix_value();
+              }
+            },
+          }
+        }
+      };
+    });
+  </script>
+</body>
+
+</html>
