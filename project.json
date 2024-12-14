@@ -1,549 +1,502 @@
 {
-	"contentrating" : "Everyone",
-	"description" : "Powerful wallpaper maker! Generation in real time!\nYou can edit 43 parameters, including the color math matrix!\n\n2023.11.21 WORK IS COMPLETED\n\nbut i have ~20 todo`s below (translate it for yourself)\nif I see that you like it, I will continue\n\n1. градиент с настройкой плавности\n2. настройка анимации приближения и отдаления (скорость, кривая движения, время движения)\n3. генерация случайных значений для всех параметров раз в заданный промежуток времени, чтобы обои всегда были уникальны\n4. список моих любимых предустановок\n5. добавление и позиционирование картинки с прозрачным фоном\n6. внедрение html-кода\n7. самостоятельно бегающий фонарь\n8. анимация приближения и отдаления для маски circle\n9. анимация размытия для масок\n10. анимация постоянно меняющихся всех параметров. то есть меняться будет скорость ширина и высота квадратов цвет надпись размытие контраст и прочее\n11. часы вместо надписи с возможностью редактирования через препроцессор\n12. воспроизвести видео \n13. прозрачный фон и наложение поверх видео или изображения\n14. инверсия маски\n15. перевод на русский язык\n16. z-index\n17. многослойный хаотично\n18. многослойный построение ландшафта\n19. backdrop-filter: url(#blob) hue-rotate(59deg); (matrix alpha 2 -22 -42 -2 -0.9)\n\n??? появляющиеся блоки на экране вступающие в контакт с окружением. в них можно засунуть какую-либо информацию, например iframe сайт или видео\n\nRepository: https://git.mirzaev.sexy/mirzaev/womb3-simplex.js\nEdit in real time: https://codepen.io/mirzaev-sexy/pen/BaxQjYo",
-	"file" : "index.html",
-	"general" : 
-	{
-		"properties" : 
-		{
-			"background" : 
-			{
-				"index" : 22,
-				"order" : 122,
-				"text" : "Background color",
-				"type" : "color",
-				"value" : "0 0 0"
+	"contentrating": "Everyone",
+	"description": "Powerful wallpaper maker! Generation in real time!\nYou can edit 43 parameters, including the color math matrix!\n\n2023.11.21 WORK IS COMPLETED\n\nbut i have ~20 todo`s below (translate it for yourself)\nif I see that you like it, I will continue\n\n1. градиент с настройкой плавности\n2. настройка анимации приближения и отдаления (скорость, кривая движения, время движения)\n3. генерация случайных значений для всех параметров раз в заданный промежуток времени, чтобы обои всегда были уникальны\n4. список моих любимых предустановок\n5. добавление и позиционирование картинки с прозрачным фоном\n6. внедрение html-кода\n7. самостоятельно бегающий фонарь\n8. анимация приближения и отдаления для маски circle\n9. анимация размытия для масок\n10. анимация постоянно меняющихся всех параметров. то есть меняться будет скорость ширина и высота квадратов цвет надпись размытие контраст и прочее\n11. часы вместо надписи с возможностью редактирования через препроцессор\n12. воспроизвести видео \n13. прозрачный фон и наложение поверх видео или изображения\n14. инверсия маски\n15. перевод на русский язык\n16. z-index\n17. многослойный хаотично\n18. многослойный построение ландшафта\n19. backdrop-filter: url(#blob) hue-rotate(59deg); (matrix alpha 2 -22 -42 -2 -0.9)\n\n??? появляющиеся блоки на экране вступающие в контакт с окружением. в них можно засунуть какую-либо информацию, например iframe сайт или видео\n\nRepository: https://git.mirzaev.sexy/mirzaev/womb3-simplex.js\nEdit in real time: https://codepen.io/mirzaev-sexy/pen/BaxQjYo",
+	"file": "index.html",
+	"general": {
+		"properties": {
+			"background": {
+				"index": 22,
+				"order": 122,
+				"text": "Background color",
+				"type": "color",
+				"value": "0 0 0"
 			},
-			"blocks_height" : 
-			{
-				"fraction" : false,
-				"index" : 18,
-				"max" : 1000,
-				"min" : 10,
-				"order" : 118,
-				"text" : "Blocks height",
-				"type" : "slider",
-				"value" : 29
+			"blocks_height": {
+				"fraction": false,
+				"index": 18,
+				"max": 1000,
+				"min": 10,
+				"order": 118,
+				"text": "Blocks height",
+				"type": "slider",
+				"value": 29
 			},
-			"blocks_width" : 
-			{
-				"fraction" : false,
-				"index" : 17,
-				"max" : 1000,
-				"min" : 10,
-				"order" : 117,
-				"text" : "Blocks width",
-				"type" : "slider",
-				"value" : 33
+			"blocks_width": {
+				"fraction": false,
+				"index": 17,
+				"max": 1000,
+				"min": 10,
+				"order": 117,
+				"text": "Blocks width",
+				"type": "slider",
+				"value": 33
 			},
-			"blur" : 
-			{
-				"fraction" : false,
-				"index" : 19,
-				"max" : 300,
-				"min" : 0,
-				"order" : 119,
-				"text" : "Blur",
-				"type" : "slider",
-				"value" : 5
+			"blur": {
+				"fraction": false,
+				"index": 19,
+				"max": 300,
+				"min": 0,
+				"order": 119,
+				"text": "Blur",
+				"type": "slider",
+				"value": 5
 			},
-			"contrast" : 
-			{
-				"fraction" : false,
-				"index" : 20,
-				"max" : 80,
-				"min" : 1,
-				"order" : 120,
-				"text" : "Contrast",
-				"type" : "slider",
-				"value" : 30
+			"contrast": {
+				"fraction": false,
+				"index": 20,
+				"max": 80,
+				"min": 1,
+				"order": 120,
+				"text": "Contrast",
+				"type": "slider",
+				"value": 30
 			},
-			"drawing" : 
-			{
-				"index" : 25,
-				"order" : 125,
-				"text" : "Drawing",
-				"type" : "bool",
-				"value" : false
+			"drawing": {
+				"index": 25,
+				"order": 125,
+				"text": "Drawing",
+				"type": "bool",
+				"value": false
 			},
-			"drawing_decay" : 
-			{
-				"condition" : "drawing.value === true",
-				"fraction" : false,
-				"index" : 26,
-				"max" : 500,
-				"min" : 1,
-				"order" : 126,
-				"text" : "Drawing decay time (tiks)",
-				"type" : "slider",
-				"value" : 120
+			"drawing_decay": {
+				"condition": "drawing.value === true",
+				"fraction": false,
+				"index": 26,
+				"max": 500,
+				"min": 1,
+				"order": 126,
+				"text": "Drawing decay time (tiks)",
+				"type": "slider",
+				"value": 120
 			},
-			"drawing_delay" : 
-			{
-				"condition" : "drawing.value === true",
-				"fraction" : false,
-				"index" : 28,
-				"max" : 3000,
-				"min" : 0,
-				"order" : 128,
-				"text" : "Drawing delay (ms)",
-				"type" : "slider",
-				"value" : 0
+			"drawing_delay": {
+				"condition": "drawing.value === true",
+				"fraction": false,
+				"index": 28,
+				"max": 3000,
+				"min": 0,
+				"order": 128,
+				"text": "Drawing delay (ms)",
+				"type": "slider",
+				"value": 0
 			},
-			"drawing_diameter" : 
-			{
-				"condition" : "drawing.value === true",
-				"fraction" : false,
-				"index" : 27,
-				"max" : 500,
-				"min" : 1,
-				"order" : 127,
-				"text" : "Drawing brush diameter",
-				"type" : "slider",
-				"value" : 40
+			"drawing_diameter": {
+				"condition": "drawing.value === true",
+				"fraction": false,
+				"index": 27,
+				"max": 500,
+				"min": 1,
+				"order": 127,
+				"text": "Drawing brush diameter",
+				"type": "slider",
+				"value": 40
 			},
-			"drawing_render" : 
-			{
-				"condition" : "drawing.value === true",
-				"fraction" : false,
-				"index" : 29,
-				"max" : 300,
-				"min" : 3,
-				"order" : 129,
-				"text" : "Drawing render frequency (ms)",
-				"type" : "slider",
-				"value" : 50
+			"drawing_render": {
+				"condition": "drawing.value === true",
+				"fraction": false,
+				"index": 29,
+				"max": 300,
+				"min": 3,
+				"order": 129,
+				"text": "Drawing render frequency (ms)",
+				"type": "slider",
+				"value": 50
 			},
-			"flashlight_delay" : 
-			{
-				"condition" : "mask.value === 'flashlight'",
-				"fraction" : false,
-				"index" : 35,
-				"max" : 3000,
-				"min" : 0,
-				"order" : 135,
-				"text" : "Flashlight delay (ms)",
-				"type" : "slider",
-				"value" : 0
+			"flashlight_delay": {
+				"condition": "mask.value === 'flashlight'",
+				"fraction": false,
+				"index": 35,
+				"max": 3000,
+				"min": 0,
+				"order": 135,
+				"text": "Flashlight delay (ms)",
+				"type": "slider",
+				"value": 0
 			},
-			"flashlight_diameter" : 
-			{
-				"condition" : "mask.value === 'flashlight'",
-				"fraction" : false,
-				"index" : 34,
-				"max" : 1000,
-				"min" : 0,
-				"order" : 134,
-				"text" : "Flashlight diameter",
-				"type" : "slider",
-				"value" : 300
+			"flashlight_diameter": {
+				"condition": "mask.value === 'flashlight'",
+				"fraction": false,
+				"index": 34,
+				"max": 1000,
+				"min": 0,
+				"order": 134,
+				"text": "Flashlight diameter",
+				"type": "slider",
+				"value": 300
 			},
-			"flashlight_render" : 
-			{
-				"condition" : "mask.value === 'flashlight'",
-				"fraction" : false,
-				"index" : 36,
-				"max" : 200,
-				"min" : 3,
-				"order" : 136,
-				"text" : "Flashlight render frequency (ms)",
-				"type" : "slider",
-				"value" : 20
+			"flashlight_render": {
+				"condition": "mask.value === 'flashlight'",
+				"fraction": false,
+				"index": 36,
+				"max": 200,
+				"min": 3,
+				"order": 136,
+				"text": "Flashlight render frequency (ms)",
+				"type": "slider",
+				"value": 20
 			},
-			"font" : 
-			{
-				"condition" : "text.value.length > 0",
-				"index" : 11,
-				"options" : 
-				[
+			"font": {
+				"condition": "text.value.length > 0",
+				"index": 11,
+				"options": [
 					{
-						"label" : "Commissioner",
-						"value" : "'Commissioner'"
+						"label": "Commissioner",
+						"value": "'Commissioner'"
 					},
 					{
-						"label" : "Sans-serif",
-						"value" : "sans-seri"
+						"label": "Sans-serif",
+						"value": "sans-seri"
 					},
 					{
-						"label" : "Hack",
-						"value" : "Hack"
+						"label": "Hack",
+						"value": "Hack"
 					},
 					{
-						"label" : "Fira",
-						"value" : "Fira"
+						"label": "Fira",
+						"value": "Fira"
 					},
 					{
-						"label" : "Roboto",
-						"value" : "Roboto"
+						"label": "Roboto",
+						"value": "Roboto"
 					}
 				],
-				"order" : 111,
-				"text" : "Font",
-				"type" : "combo",
-				"value" : "'Commissioner'"
+				"order": 111,
+				"text": "Font",
+				"type": "combo",
+				"value": "'Commissioner'"
 			},
-			"font_weight" : 
-			{
-				"condition" : "text.value.length > 0",
-				"fraction" : false,
-				"index" : 12,
-				"max" : 9,
-				"min" : 1,
-				"order" : 112,
-				"text" : "Font weight",
-				"type" : "slider",
-				"value" : 8
+			"font_weight": {
+				"condition": "text.value.length > 0",
+				"fraction": false,
+				"index": 12,
+				"max": 9,
+				"min": 1,
+				"order": 112,
+				"text": "Font weight",
+				"type": "slider",
+				"value": 8
 			},
-			"left" : 
-			{
-				"fraction" : false,
-				"index" : 13,
-				"max" : 100,
-				"min" : -100,
-				"order" : 113,
-				"text" : "Left offset (%)",
-				"type" : "slider",
-				"value" : 0
+			"left": {
+				"fraction": false,
+				"index": 13,
+				"max": 100,
+				"min": -100,
+				"order": 113,
+				"text": "Left offset (%)",
+				"type": "slider",
+				"value": 0
 			},
-			"mask" : 
-			{
-				"index" : 30,
-				"options" : 
-				[
+			"mask": {
+				"index": 30,
+				"options": [
 					{
-						"label" : "Disabled",
-						"value" : "unset"
+						"label": "Disabled",
+						"value": "unset"
 					},
 					{
-						"label" : "Flashlight",
-						"value" : "flashlight"
+						"label": "Flashlight",
+						"value": "flashlight"
 					},
 					{
-						"label" : "Circle",
-						"value" : "circle"
+						"label": "Circle",
+						"value": "circle"
 					},
 					{
-						"label" : "Custom",
-						"value" : "custom"
+						"label": "Custom",
+						"value": "custom"
 					}
 				],
-				"order" : 130,
-				"text" : "Mask",
-				"type" : "combo",
-				"value" : "unset"
+				"order": 130,
+				"text": "Mask",
+				"type": "combo",
+				"value": "unset"
 			},
-			"mask_blur" : 
-			{
-				"condition" : "mask.value !== 'unset' && mask_target.value === 'noise_text'",
-				"fraction" : false,
-				"index" : 32,
-				"max" : 10,
-				"min" : 0,
-				"order" : 132,
-				"text" : "Mask blur",
-				"type" : "slider",
-				"value" : 0
+			"mask_blur": {
+				"condition": "mask.value !== 'unset' && mask_target.value === 'noise_text'",
+				"fraction": false,
+				"index": 32,
+				"max": 10,
+				"min": 0,
+				"order": 132,
+				"text": "Mask blur",
+				"type": "slider",
+				"value": 0
 			},
-			"mask_circle" : 
-			{
-				"condition" : "mask.value === 'circle'",
-				"fraction" : false,
-				"index" : 38,
-				"max" : 100,
-				"min" : 0,
-				"order" : 138,
-				"text" : "Mack: circle",
-				"type" : "slider",
-				"value" : 30
+			"mask_circle": {
+				"condition": "mask.value === 'circle'",
+				"fraction": false,
+				"index": 38,
+				"max": 100,
+				"min": 0,
+				"order": 138,
+				"text": "Mack: circle",
+				"type": "slider",
+				"value": 30
 			},
-			"mask_contrast" : 
-			{
-				"condition" : "mask.value !== 'unset' && mask_target.value === 'noise_text'",
-				"fraction" : false,
-				"index" : 33,
-				"max" : 50,
-				"min" : 1,
-				"order" : 133,
-				"text" : "Mask contrast",
-				"type" : "slider",
-				"value" : 1
+			"mask_contrast": {
+				"condition": "mask.value !== 'unset' && mask_target.value === 'noise_text'",
+				"fraction": false,
+				"index": 33,
+				"max": 50,
+				"min": 1,
+				"order": 133,
+				"text": "Mask contrast",
+				"type": "slider",
+				"value": 1
 			},
-			"mask_custom" : 
-			{
-				"condition" : "mask.value === 'custom'",
-				"index" : 37,
-				"order" : 137,
-				"text" : "Mask: custom",
-				"type" : "textinput",
-				"value" : "circle(20% at 60% 40%)"
+			"mask_custom": {
+				"condition": "mask.value === 'custom'",
+				"index": 37,
+				"order": 137,
+				"text": "Mask: custom",
+				"type": "textinput",
+				"value": "circle(20% at 60% 40%)"
 			},
-			"mask_target" : 
-			{
-				"condition" : "mask.value !== 'unset'",
-				"index" : 31,
-				"options" : 
-				[
+			"mask_target": {
+				"condition": "mask.value !== 'unset'",
+				"index": 31,
+				"options": [
 					{
-						"label" : "Noise",
-						"value" : "noise"
+						"label": "Noise",
+						"value": "noise"
 					},
 					{
-						"label" : "Text",
-						"value" : "text"
+						"label": "Text",
+						"value": "text"
 					},
 					{
-						"label" : "Noise + text",
-						"value" : "noise_text"
+						"label": "Noise + text",
+						"value": "noise_text"
 					}
 				],
-				"order" : 131,
-				"text" : "Mask target",
-				"type" : "combo",
-				"value" : "noise_text"
+				"order": 131,
+				"text": "Mask target",
+				"type": "combo",
+				"value": "noise_text"
 			},
-			"matrix_1" : 
-			{
-				"index" : 39,
-				"order" : 139,
-				"text" : "Matrix red by [r g b a w]",
-				"type" : "textinput",
-				"value" : "1 0 0 0 0"
+			"matrix_1": {
+				"index": 39,
+				"order": 139,
+				"text": "Matrix red by [r g b a w]",
+				"type": "textinput",
+				"value": "1 0 0 0 0"
 			},
-			"matrix_2" : 
-			{
-				"index" : 40,
-				"order" : 140,
-				"text" : "Matrix green by [r g b a w]",
-				"type" : "textinput",
-				"value" : "0 1 0 0 0"
+			"matrix_2": {
+				"index": 40,
+				"order": 140,
+				"text": "Matrix green by [r g b a w]",
+				"type": "textinput",
+				"value": "0 1 0 0 0"
 			},
-			"matrix_3" : 
-			{
-				"index" : 41,
-				"order" : 141,
-				"text" : "Matrix blue by [r g b a w]",
-				"type" : "textinput",
-				"value" : "0 0 1 0 0"
+			"matrix_3": {
+				"index": 41,
+				"order": 141,
+				"text": "Matrix blue by [r g b a w]",
+				"type": "textinput",
+				"value": "0 0 1 0 0"
 			},
-			"matrix_4" : 
-			{
-				"index" : 42,
-				"order" : 142,
-				"text" : "Matrix alpha by [r g b a w]",
-				"type" : "textinput",
-				"value" : "0 0 0 19 -9"
+			"matrix_4": {
+				"index": 42,
+				"order": 142,
+				"text": "Matrix alpha by [r g b a w]",
+				"type": "textinput",
+				"value": "0 0 0 19 -9"
 			},
-			"noise_blur" : 
-			{
-				"fraction" : false,
-				"index" : 21,
-				"max" : 500,
-				"min" : 0,
-				"order" : 121,
-				"text" : "Noise blur",
-				"type" : "slider",
-				"value" : 20
+			"noise_blur": {
+				"fraction": false,
+				"index": 21,
+				"max": 500,
+				"min": 0,
+				"order": 121,
+				"text": "Noise blur",
+				"type": "slider",
+				"value": 20
 			},
-			"render" : 
-			{
-				"condition" : "speed.value > 0",
-				"fraction" : false,
-				"index" : 24,
-				"max" : 300,
-				"min" : 3,
-				"order" : 124,
-				"text" : "Render frequency (ms)",
-				"type" : "slider",
-				"value" : 19
+			"render": {
+				"condition": "speed.value > 0",
+				"fraction": false,
+				"index": 24,
+				"max": 300,
+				"min": 3,
+				"order": 124,
+				"text": "Render frequency (ms)",
+				"type": "slider",
+				"value": 19
 			},
-			"schemecolor" : 
-			{
-				"order" : 0,
-				"text" : "ui_browse_properties_scheme_color",
-				"type" : "color",
-				"value" : "1 0 0"
+			"schemecolor": {
+				"order": 0,
+				"text": "ui_browse_properties_scheme_color",
+				"type": "color",
+				"value": "1 0 0"
 			},
-			"speed" : 
-			{
-				"condition" : "",
-				"fraction" : false,
-				"index" : 23,
-				"max" : 800,
-				"min" : 0,
-				"order" : 123,
-				"text" : "Speed",
-				"type" : "slider",
-				"value" : 40
+			"speed": {
+				"condition": "",
+				"fraction": false,
+				"index": 23,
+				"max": 800,
+				"min": 0,
+				"order": 123,
+				"text": "Speed",
+				"type": "slider",
+				"value": 40
 			},
-			"stick" : 
-			{
-				"fraction" : true,
-				"index" : 16,
-				"max" : 2,
-				"min" : 1,
-				"order" : 116,
-				"precision" : 2,
-				"step" : 0.1,
-				"text" : "Stick to edges",
-				"type" : "slider",
-				"value" : 1
+			"stick": {
+				"fraction": true,
+				"index": 16,
+				"max": 2,
+				"min": 1,
+				"order": 116,
+				"precision": 2,
+				"step": 0.1,
+				"text": "Stick to edges",
+				"type": "slider",
+				"value": 1
 			},
-			"text" : 
-			{
-				"index" : 0,
-				"order" : 100,
-				"text" : "Text",
-				"type" : "textinput",
-				"value" : "УТРОБА 3"
+			"text": {
+				"index": 0,
+				"order": 100,
+				"text": "Text",
+				"type": "textinput",
+				"value": "УТРОБА 3"
 			},
-			"text_border_blur" : 
-			{
-				"condition" : "text.value.length > 0",
-				"fraction" : false,
-				"index" : 7,
-				"max" : 500,
-				"min" : 0,
-				"order" : 107,
-				"text" : "Text border blur (px)",
-				"type" : "slider",
-				"value" : 150
+			"text_border_blur": {
+				"condition": "text.value.length > 0",
+				"fraction": false,
+				"index": 7,
+				"max": 500,
+				"min": 0,
+				"order": 107,
+				"text": "Text border blur (px)",
+				"type": "slider",
+				"value": 150
 			},
-			"text_border_color" : 
-			{
-				"condition" : "text.value.length > 0 && (text_border_x.value > 0 || text_border_y.value > 0 || text_border_blur.value > 0)",
-				"index" : 9,
-				"order" : 109,
-				"text" : "Text border color",
-				"type" : "color",
-				"value" : "0 0 0"
+			"text_border_color": {
+				"condition": "text.value.length > 0 && (text_border_x.value > 0 || text_border_y.value > 0 || text_border_blur.value > 0)",
+				"index": 9,
+				"order": 109,
+				"text": "Text border color",
+				"type": "color",
+				"value": "0 0 0"
 			},
-			"text_border_depth" : 
-			{
-				"condition" : "text.value.length > 0 && (text_border_x.value !== 0 || text_border_y.value !== 0 || text_border_blur.value !== 0)",
-				"fraction" : false,
-				"index" : 8,
-				"max" : 100,
-				"min" : 1,
-				"order" : 108,
-				"text" : "Text border depth",
-				"type" : "slider",
-				"value" : 3
+			"text_border_depth": {
+				"condition": "text.value.length > 0 && (text_border_x.value !== 0 || text_border_y.value !== 0 || text_border_blur.value !== 0)",
+				"fraction": false,
+				"index": 8,
+				"max": 100,
+				"min": 1,
+				"order": 108,
+				"text": "Text border depth",
+				"type": "slider",
+				"value": 3
 			},
-			"text_border_x" : 
-			{
-				"condition" : "text.value.length > 0",
-				"fraction" : false,
-				"index" : 5,
-				"max" : 300,
-				"min" : -300,
-				"order" : 105,
-				"text" : "Text border X (px)",
-				"type" : "slider",
-				"value" : 0
+			"text_border_x": {
+				"condition": "text.value.length > 0",
+				"fraction": false,
+				"index": 5,
+				"max": 300,
+				"min": -300,
+				"order": 105,
+				"text": "Text border X (px)",
+				"type": "slider",
+				"value": 0
 			},
-			"text_border_y" : 
-			{
-				"condition" : "text.value.length > 0",
-				"fraction" : false,
-				"index" : 6,
-				"max" : 300,
-				"min" : -300,
-				"order" : 106,
-				"text" : "Text border Y (px)",
-				"type" : "slider",
-				"value" : 0
+			"text_border_y": {
+				"condition": "text.value.length > 0",
+				"fraction": false,
+				"index": 6,
+				"max": 300,
+				"min": -300,
+				"order": 106,
+				"text": "Text border Y (px)",
+				"type": "slider",
+				"value": 0
 			},
-			"text_color" : 
-			{
-				"condition" : "text.value.length > 0",
-				"index" : 10,
-				"order" : 110,
-				"text" : "Text color",
-				"type" : "color",
-				"value" : "1 1 1"
+			"text_color": {
+				"condition": "text.value.length > 0",
+				"index": 10,
+				"order": 110,
+				"text": "Text color",
+				"type": "color",
+				"value": "1 1 1"
 			},
-			"text_left" : 
-			{
-				"condition" : "text.value.length > 0",
-				"fraction" : false,
-				"index" : 1,
-				"max" : 100,
-				"min" : -100,
-				"order" : 101,
-				"text" : "Text left offset (%)",
-				"type" : "slider",
-				"value" : 0
+			"text_left": {
+				"condition": "text.value.length > 0",
+				"fraction": false,
+				"index": 1,
+				"max": 100,
+				"min": -100,
+				"order": 101,
+				"text": "Text left offset (%)",
+				"type": "slider",
+				"value": 0
 			},
-			"text_opacity" : 
-			{
-				"condition" : "text.value.length > 0",
-				"fraction" : false,
-				"index" : 4,
-				"max" : 100,
-				"min" : 0,
-				"order" : 104,
-				"text" : "Text opacity (%)",
-				"type" : "slider",
-				"value" : 65
+			"text_opacity": {
+				"condition": "text.value.length > 0",
+				"fraction": false,
+				"index": 4,
+				"max": 100,
+				"min": 0,
+				"order": 104,
+				"text": "Text opacity (%)",
+				"type": "slider",
+				"value": 65
 			},
-			"text_size" : 
-			{
-				"condition" : "text.value.length > 0",
-				"fraction" : false,
-				"index" : 3,
-				"max" : 200,
-				"min" : 0,
-				"order" : 103,
-				"text" : "Text size (rem)",
-				"type" : "slider",
-				"value" : 12
+			"text_size": {
+				"condition": "text.value.length > 0",
+				"fraction": false,
+				"index": 3,
+				"max": 200,
+				"min": 0,
+				"order": 103,
+				"text": "Text size (rem)",
+				"type": "slider",
+				"value": 12
 			},
-			"text_top" : 
-			{
-				"condition" : "text.value.length > 0",
-				"fraction" : false,
-				"index" : 2,
-				"max" : 100,
-				"min" : -100,
-				"order" : 102,
-				"text" : "Text top offset (%)",
-				"type" : "slider",
-				"value" : 0
+			"text_top": {
+				"condition": "text.value.length > 0",
+				"fraction": false,
+				"index": 2,
+				"max": 100,
+				"min": -100,
+				"order": 102,
+				"text": "Text top offset (%)",
+				"type": "slider",
+				"value": 0
 			},
-			"top" : 
-			{
-				"fraction" : false,
-				"index" : 14,
-				"max" : 100,
-				"min" : -100,
-				"order" : 114,
-				"text" : "Top offset (%)",
-				"type" : "slider",
-				"value" : 0
+			"top": {
+				"fraction": false,
+				"index": 14,
+				"max": 100,
+				"min": -100,
+				"order": 114,
+				"text": "Top offset (%)",
+				"type": "slider",
+				"value": 0
 			},
-			"zoom" : 
-			{
-				"fraction" : true,
-				"index" : 15,
-				"max" : 5,
-				"min" : 0.2,
-				"order" : 115,
-				"precision" : 3,
-				"step" : 0.01,
-				"text" : "Zoom",
-				"type" : "slider",
-				"value" : 1
+			"zoom": {
+				"fraction": true,
+				"index": 15,
+				"max": 5,
+				"min": 0.2,
+				"order": 115,
+				"precision": 3,
+				"step": 0.01,
+				"text": "Zoom",
+				"type": "slider",
+				"value": 1
 			}
 		}
 	},
-	"preview" : "preview.jpg",
-	"ratingsex" : "none",
-	"ratingviolence" : "none",
-	"tags" : [ "Abstract" ],
-	"title" : "womb3-simplex.js",
-	"type" : "Web",
-	"version" : 3,
-	"visibility" : "public",
-	"workshopid" : "3087430455",
-	"workshopurl" : "steam://url/CommunityFilePage/3087430455"
+	"preview": "preview.jpg",
+	"ratingsex": "none",
+	"ratingviolence": "none",
+	"tags": [
+		"Abstract"
+	],
+	"title": "womb3-simplex.js",
+	"type": "Web",
+	"version": 3,
+	"visibility": "public",
+	"workshopid": "3087430455",
+	"workshopurl": "steam://url/CommunityFilePage/3087430455"
 }

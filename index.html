@@ -2,34 +2,34 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
-  <title>womb3</title>
-  <link rel="stylesheet" type="text/css" href="css/main.css" />
-  <link rel="stylesheet" type="text/css" href="css/fira.css" />
-  <link rel="stylesheet" type="text/css" href="css/hack.css" />
+	<title>mirzaev/wallpaper-womb3-simplex</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<link rel="stylesheet" type="text/css" href="css/fira.css" />
+	<link rel="stylesheet" type="text/css" href="css/hack.css" />
 </head>
 
 <body>
-  <header>
-    <h1 id="text">УТРОБА 3</h1>
-  </header>
-  <canvas class="shell"></canvas>
+	<header>
+		<h1 id="text">WOMB 3</h1>
+	</header>
+	<canvas class="shell"></canvas>
 
-  <svg style="position: absolute">
-    <defs>
-      <filter id="blob">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"></feGaussianBlur>
-        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="blob">
-        </feColorMatrix>
-      </filter>
-    </defs>
-  </svg>
+	<svg style="position: absolute">
+		<defs>
+			<filter id="blob">
+				<feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"></feGaussianBlur>
+				<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="blob">
+				</feColorMatrix>
+			</filter>
+		</defs>
+	</svg>
 
-  <script src="js/womb3-simplex.js" type="module"></script>
-  <script>
+	<script src="js/womb3-simplex.js" type="module"></script>
+	<script>
     document.addEventListener('womb.loaded', function (e) {
       for (const shell of document.getElementsByClassName('shell')) {
         // Перебор оболочек
