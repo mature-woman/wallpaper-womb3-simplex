@@ -3,6 +3,8 @@
 Powerful wallpaper maker! Generation in real time!
 You can edit 43 parameters, including the color math matrix!
 
+It is free to install from the [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3087430455), have fun.
+
 <p float="left">
   <img src="images/settings_1.jpg" width="30%" />
   <img src="images/settings_2.jpg" width="30%" />
